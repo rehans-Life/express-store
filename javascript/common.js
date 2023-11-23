@@ -6,20 +6,24 @@ import { showToast } from "./toast.js";
 
   const modalDiv = document.createElement("div");
   const shoppingCartDiv = document.createElement("div");
+  const footerDiv = document.createElement("div");
 
   const headerHTML = await (await fetch("../components/header.html")).text();
   const modalHTML = await (await fetch("../components/modal.html")).text();
   const shoppingCartHTML = await (
     await fetch("../components/shopping-cart.html")
   ).text();
+  const footerHTML = await (await fetch("../components/footer.html")).text();
 
   navbar.innerHTML = headerHTML;
   modalDiv.innerHTML = modalHTML;
   shoppingCartDiv.innerHTML = shoppingCartHTML;
+  footerDiv.innerHTML = footerHTML;
 
   document.body.prepend(navbar);
   document.body.prepend(modalDiv);
-  document.body.prepend(shoppingCartDiv);
+  document.body.appendChild(footerDiv);
+  document.getElementById("container").appendChild(shoppingCartDiv);
 
   const userInfo = JSON.parse(localStorage.getItem("user"));
 
@@ -67,7 +71,9 @@ import { showToast } from "./toast.js";
   registerBtn.onclick = onOpen;
   dimmer.onclick = onClose;
   document.getElementById("close").onclick = onClose;
-  document.getElementById("submit").onclick = (e) => onSubmit(e, onClose);
+  [...document.getElementsByClassName("submit")].forEach(
+    (btn) => (btn.onclick = (e) => onSubmit(e, onClose))
+  );
   document.getElementById("sign-out").onclick = signOut;
 })();
 
@@ -84,11 +90,21 @@ const signOut = (_) => {
 const onSubmit = (e, onClose) => {
   e.preventDefault();
 
+  console.log(document.getElementById("firstName2").value);
+
   const form = {
-    "First Name": document.getElementById("firstName").value,
-    "Last Name": document.getElementById("lastName").value,
-    "Mobile Number": document.getElementById("mobileNumber").value,
-    Email: document.getElementById("email").value,
+    "First Name": document.getElementById("firstName").value
+      ? document.getElementById("firstName").value
+      : document.getElementById("firstName2").value,
+    "Last Name": document.getElementById("lastName").value
+      ? document.getElementById("lastName").value
+      : document.getElementById("lastName2").value,
+    "Mobile Number": document.getElementById("mobileNumber").value
+      ? document.getElementById("mobileNumber").value
+      : document.getElementById("mobileNumber2").value,
+    Email: document.getElementById("email").value
+      ? document.getElementById("email").value
+      : document.getElementById("email2").value,
   };
 
   if (Object.values(form).some((value) => !value)) {
@@ -134,6 +150,10 @@ function resetRegisterForm() {
   document.getElementById("lastName").value = "";
   document.getElementById("mobileNumber").value = "";
   document.getElementById("email").value = "";
+  document.getElementById("firstName2").value = "";
+  document.getElementById("lastName2").value = "";
+  document.getElementById("mobileNumber2").value = "";
+  document.getElementById("email2").value = "";
 }
 
 function setUserInfo(details) {
