@@ -3,11 +3,36 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Skyline Store</title>
+    <title>Express Store</title>
     <meta
       name="description"
-      content="Skyline Store, your favorite place to buy products online"
+      content="Express Store, your favorite place to buy products online"
     />
+    <link rel="stylesheet" href="styles/global.css" />
+    <script type="module" src="./javascript/common.js" defer></script>
+    <script type="module" src="./javascript/carousel.js" defer></script>
   </head>
-  <body></body>
+  <body>
+    <div class="container">
+      <div class="content">
+        <div class="text">
+          Immerse yourself in the sound you deserve with our premium headphones,
+          airbuds, and speakers.
+        </div>
+        <div class="space-5"></div>
+        <button class="black-btn">
+          <span>View Products</span>
+        </button>
+      </div>
+      <div class="carousel">
+        <div id="left" class="arrow">
+          <img src="./images/icons/chevron-left.svg" />
+        </div>
+        <div class="carousel-container"></div>
+        <div id="right" class="arrow">
+          <img src="./images/icons/chevron-right.svg" />
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
