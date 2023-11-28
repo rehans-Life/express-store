@@ -1,4 +1,9 @@
 import { showToast } from "./toast.js";
+import {
+  openShoppingCart,
+  onCloseShoppingCart,
+  displayCartItems,
+} from "./shopping-cart.js";
 
 (async () => {
   const navbar = document.createElement("div");
@@ -23,18 +28,18 @@ import { showToast } from "./toast.js";
   document.body.prepend(navbar);
   document.body.prepend(modalDiv);
   document.body.appendChild(footerDiv);
-  document.getElementById("container").appendChild(shoppingCartDiv);
+  document.body.appendChild(shoppingCartDiv);
+
+  displayCartItems();
 
   const userInfo = JSON.parse(localStorage.getItem("user"));
 
   if (userInfo) {
     setUserInfo(userInfo);
-    document.getElementById("register").style.display = "none";
   }
 
   const registerBtn = document.getElementById("register");
   const dimmer = document.getElementById("dimmer");
-  dimmer.style.display = "none";
 
   const modal = [...dimmer.childNodes].find(
     (el) => el instanceof HTMLDivElement
@@ -59,14 +64,8 @@ import { showToast } from "./toast.js";
     e.stopPropagation();
   };
 
-  document.getElementById("shopping-cart-close").onclick = () => {
-    document.getElementById("shopping-cart").style.transform =
-      "TranslateX(100%)";
-  };
-
-  document.getElementById("cart-icon").onclick = () => {
-    document.getElementById("shopping-cart").style.transform = "TranslateX(0%)";
-  };
+  document.getElementById("shopping-cart-close").onclick = onCloseShoppingCart;
+  document.getElementById("cart-icon").onclick = openShoppingCart;
 
   registerBtn.onclick = onOpen;
   dimmer.onclick = onClose;
@@ -83,6 +82,7 @@ const signOut = (_) => {
     "success",
     4
   );
+  localStorage.removeItem("user");
   document.getElementById("register").style.display = "inline-block";
   document.getElementById("name").parentNode.style.display = "none";
 };
@@ -90,21 +90,19 @@ const signOut = (_) => {
 const onSubmit = (e, onClose) => {
   e.preventDefault();
 
-  console.log(document.getElementById("firstName2").value);
-
   const form = {
     "First Name": document.getElementById("firstName").value
       ? document.getElementById("firstName").value
-      : document.getElementById("firstName2").value,
+      : document.getElementById("firstName2")?.value,
     "Last Name": document.getElementById("lastName").value
       ? document.getElementById("lastName").value
-      : document.getElementById("lastName2").value,
+      : document.getElementById("lastName2")?.value,
     "Mobile Number": document.getElementById("mobileNumber").value
       ? document.getElementById("mobileNumber").value
-      : document.getElementById("mobileNumber2").value,
+      : document.getElementById("mobileNumber2")?.value,
     Email: document.getElementById("email").value
       ? document.getElementById("email").value
-      : document.getElementById("email2").value,
+      : document.getElementById("email2")?.value,
   };
 
   if (Object.values(form).some((value) => !value)) {
@@ -135,7 +133,6 @@ const onSubmit = (e, onClose) => {
   }
 
   setUserInfo(form);
-  document.getElementById("register").style.display = "none";
 
   showToast("You have been successfully logged into the system", "success", 4);
 
@@ -150,14 +147,17 @@ function resetRegisterForm() {
   document.getElementById("lastName").value = "";
   document.getElementById("mobileNumber").value = "";
   document.getElementById("email").value = "";
-  document.getElementById("firstName2").value = "";
-  document.getElementById("lastName2").value = "";
-  document.getElementById("mobileNumber2").value = "";
-  document.getElementById("email2").value = "";
+  if (location.pathname.includes("index.html")) {
+    document.getElementById("firstName2").value = "";
+    document.getElementById("lastName2").value = "";
+    document.getElementById("mobileNumber2").value = "";
+    document.getElementById("email2").value = "";
+  }
 }
 
 function setUserInfo(details) {
   const nameField = document.getElementById("name");
   nameField.innerText = `Hello, ${details["First Name"]} ${details["Last Name"]}`;
   nameField.parentNode.style.display = "flex";
+  document.getElementById("register").style.display = "none";
 }

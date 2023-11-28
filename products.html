@@ -6,7 +6,19 @@
     <title>Expresss - Products</title>
     <link rel="stylesheet" href="styles/global.css" />
     <link rel="stylesheet" href="styles/products.css" />
+    <script type="module" src="./javascript/products.js"></script>
     <script type="module" src="./javascript/common.js" defer></script>
   </head>
-  <body></body>
+  <body>
+    <div class="container">
+      <div class="heading">Our Products</div>
+      <div class="categories">
+        <select class="order">
+          <option value="asc">ASC</option>
+          <option value="desc">DESC</option>
+        </select>
+      </div>
+      <div class="products-grid"></div>
+    </div>
+  </body>
 </html>
