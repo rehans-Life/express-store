@@ -338,10 +338,26 @@
 
 .cart-items-container {
   padding: 10px;
-  flex: 1;
   max-height: 325px;
   overflow: scroll;
   width: 100%;
+}
+
+.empty-cart-container {
+  display: none;
+  padding: 10px;
+}
+
+.cart-items-container:empty + .empty-cart-container {
+  display: flex;
+  flex-direction: column;
+  row-gap: 25px;
+  align-items: center;
+}
+
+.empty-cart-container .empty-cart-text {
+  font-weight: 600;
+  font-size: 16px;
 }
 
 .cart-items-container::-webkit-scrollbar {
