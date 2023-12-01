@@ -1,4 +1,9 @@
 import { showToast } from "./toast.js";
+import {
+  openShoppingCart,
+  onCloseShoppingCart,
+  displayCartItems,
+} from "./shopping-cart.js";
 
 (async () => {
   const navbar = document.createElement("div");
@@ -6,31 +11,35 @@ import { showToast } from "./toast.js";
 
   const modalDiv = document.createElement("div");
   const shoppingCartDiv = document.createElement("div");
+  const footerDiv = document.createElement("div");
 
   const headerHTML = await (await fetch("../components/header.html")).text();
   const modalHTML = await (await fetch("../components/modal.html")).text();
   const shoppingCartHTML = await (
     await fetch("../components/shopping-cart.html")
   ).text();
+  const footerHTML = await (await fetch("../components/footer.html")).text();
 
   navbar.innerHTML = headerHTML;
   modalDiv.innerHTML = modalHTML;
   shoppingCartDiv.innerHTML = shoppingCartHTML;
+  footerDiv.innerHTML = footerHTML;
 
   document.body.prepend(navbar);
   document.body.prepend(modalDiv);
-  document.body.prepend(shoppingCartDiv);
+  document.body.appendChild(footerDiv);
+  document.body.appendChild(shoppingCartDiv);
+
+  displayCartItems();
 
   const userInfo = JSON.parse(localStorage.getItem("user"));
 
   if (userInfo) {
     setUserInfo(userInfo);
-    document.getElementById("register").style.display = "none";
   }
 
   const registerBtn = document.getElementById("register");
   const dimmer = document.getElementById("dimmer");
-  dimmer.style.display = "none";
 
   const modal = [...dimmer.childNodes].find(
     (el) => el instanceof HTMLDivElement
@@ -55,19 +64,15 @@ import { showToast } from "./toast.js";
     e.stopPropagation();
   };
 
-  document.getElementById("shopping-cart-close").onclick = () => {
-    document.getElementById("shopping-cart").style.transform =
-      "TranslateX(100%)";
-  };
-
-  document.getElementById("cart-icon").onclick = () => {
-    document.getElementById("shopping-cart").style.transform = "TranslateX(0%)";
-  };
+  document.getElementById("shopping-cart-close").onclick = onCloseShoppingCart;
+  document.getElementById("cart-icon").onclick = openShoppingCart;
 
   registerBtn.onclick = onOpen;
   dimmer.onclick = onClose;
   document.getElementById("close").onclick = onClose;
-  document.getElementById("submit").onclick = (e) => onSubmit(e, onClose);
+  [...document.getElementsByClassName("submit")].forEach(
+    (btn) => (btn.onclick = (e) => onSubmit(e, onClose))
+  );
   document.getElementById("sign-out").onclick = signOut;
 })();
 
@@ -77,18 +82,25 @@ const signOut = (_) => {
     "success",
     4
   );
+  localStorage.removeItem("user");
   document.getElementById("register").style.display = "inline-block";
   document.getElementById("name").parentNode.style.display = "none";
 };
 
-const onSubmit = (e, onClose) => {
+function inputWithValue(query) {
+  return [...document.querySelectorAll(query)].reduce((acc, curr) => {
+    return curr.value ? curr : acc;
+  }, null);
+}
+
+function onSubmit(e, onClose) {
   e.preventDefault();
 
   const form = {
-    "First Name": document.getElementById("firstName").value,
-    "Last Name": document.getElementById("lastName").value,
-    "Mobile Number": document.getElementById("mobileNumber").value,
-    Email: document.getElementById("email").value,
+    "First Name": inputWithValue(".firstName").value,
+    "Last Name": inputWithValue(".lastName").value,
+    "Mobile Number": inputWithValue(".mobileNumber").value,
+    Email: inputWithValue(".email").value,
   };
 
   if (Object.values(form).some((value) => !value)) {
@@ -119,7 +131,6 @@ const onSubmit = (e, onClose) => {
   }
 
   setUserInfo(form);
-  document.getElementById("register").style.display = "none";
 
   showToast("You have been successfully logged into the system", "success", 4);
 
@@ -127,17 +138,18 @@ const onSubmit = (e, onClose) => {
 
   resetRegisterForm();
   onClose();
-};
+}
 
 function resetRegisterForm() {
-  document.getElementById("firstName").value = "";
-  document.getElementById("lastName").value = "";
-  document.getElementById("mobileNumber").value = "";
-  document.getElementById("email").value = "";
+  inputWithValue(".firstName").value = "";
+  inputWithValue(".lastName").value = "";
+  inputWithValue(".mobileNumber").value = "";
+  inputWithValue(".email").value = "";
 }
 
 function setUserInfo(details) {
   const nameField = document.getElementById("name");
   nameField.innerText = `Hello, ${details["First Name"]} ${details["Last Name"]}`;
   nameField.parentNode.style.display = "flex";
+  document.getElementById("register").style.display = "none";
 }
