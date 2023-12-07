@@ -4,9 +4,9 @@ const headphones = [
   {
     id: 1,
     image: "images/carousel/headphone.webp",
-    title: "PUSH® ACTIVE TRUE WIRELESS EARBUDS",
+    title: "Crusher® ANC 2 Sensory Bass Headphones with Active Noise Canceling",
     category: "Headphones",
-    price: 24,
+    price: 199.99,
   },
   {
     id: 2,

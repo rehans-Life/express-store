@@ -117,7 +117,7 @@
   flex-direction: column;
   column-gap: 20px;
   row-gap: 35px;
-  padding: 30px 4rem;
+  padding: 3rem 4rem;
 }
 
 .content {
@@ -699,7 +699,9 @@
   color: black;
   font-weight: 800;
   letter-spacing: -1px;
+  text-align: center;
   text-transform: uppercase;
+  line-height: 2.5rem;
 }
 
 .product {
