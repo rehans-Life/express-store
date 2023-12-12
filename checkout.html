@@ -6,6 +6,37 @@
     <title>Expresss - Checkout</title>
     <link rel="stylesheet" href="styles/global.css" />
     <link rel="stylesheet" href="styles/checkout.css" />
+    <script type="module" src="./javascript/checkout.js"></script>
   </head>
-  <body></body>
+  <body>
+    <div class="cheader">
+      <img src="images/logo.png" class="clogo" />
+      <div class="heading" style="color: white">Express</div>
+    </div>
+    <div class="container">
+      <div class="heading">checkout</div>
+      <div class="checkout-items"></div>
+      <div class="calctotal">
+        <div class="calc">
+          <div class="val-container">
+            <div class="label">Subtotal:</div>
+            <div class="value subtotal-value"></div>
+          </div>
+          <div class="val-container">
+            <div class="label">Shipping:</div>
+            <div class="value">12 BD</div>
+          </div>
+          <div class="total-container">
+            <div class="label">Total:</div>
+            <div class="value total-value"></div>
+          </div>
+          <div class="cbtn">
+            <button class="blue-btn" id="checkout" type="button">
+              <span>CHECKOUT</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>

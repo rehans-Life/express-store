@@ -32,7 +32,7 @@ export function displayCartItems() {
   displayAmounts(cartItems);
 }
 
-function displayAmounts(cartItems) {
+export function displayAmounts(cartItems) {
   const subtotal = cartItems.reduce(
     (acc, { price, quantity }) => acc + price * quantity,
     0

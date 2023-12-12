@@ -246,7 +246,8 @@
 /* Button Styles */
 
 .black-btn,
-.white-btn {
+.white-btn,
+.blue-btn {
   font-family: Poppins;
   padding: 10px 25px;
   border: none;
@@ -266,6 +267,11 @@
   color: white;
 }
 
+.blue-btn {
+  background-color: rgb(175, 214, 248);
+  color: white;
+}
+
 .selected-black-btn {
   background-color: black;
 }
@@ -275,12 +281,14 @@
 }
 
 .black-btn span,
-.white-btn span {
+.white-btn span,
+.blue-btn span {
   position: relative;
 }
 
 .black-btn::before,
-.white-btn::before {
+.white-btn::before,
+.blue-btn::before {
   content: "";
   position: absolute;
   background-color: black;
@@ -300,8 +308,13 @@
   background-color: lightgrey;
 }
 
+.blue-btn::before {
+  background-color: rgb(214, 235, 252);
+}
+
 .white-btn:hover::before,
-.black-btn:hover::before {
+.black-btn:hover::before,
+.blue-btn:hover::before {
   clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
 }
 
@@ -537,6 +550,7 @@
 .cart-item .cart-item-img {
   height: 46px;
   width: 46px;
+  border-radius: 5px;
 }
 
 .cart-item .cart-item-info {
