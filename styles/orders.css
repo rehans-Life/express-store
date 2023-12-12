@@ -1,23 +1,16 @@
-
-
-/* Main Section */
-h1{
-    text-align: center;
-    padding-top: 3%;
-    font-size: 4vw;
-    padding-bottom: 1%;
+.orders-container {
+  width: 100%;
 }
 
-hr{
-    border-radius: 5px;
-     width: 80%;
+hr {
+  border-radius: 5px;
+  width: 80%;
   margin: 30px auto;
   border: none;
-  border-top: 2px solid #D3D3D3;
+  border-top: 2px solid #d3d3d3;
 }
 @media (max-width: 768px) {
-  hr{
+  hr {
     margin: 10px auto;
   }
 }
-
