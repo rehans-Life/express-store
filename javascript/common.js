@@ -257,13 +257,13 @@ function onSubmit(e, onClose) {
     return;
   }
 
-  if (Number.isNaN(parseInt(form["Mobile Number"]))) {
-    showToast("Please enter a valid number", "error", 4);
+  if (form["Mobile Number"].length !== 8) {
+    showToast("Mobile Number should of exactly 8 characters", "error", 4);
     return;
   }
 
-  if (form["Mobile Number"].length !== 8) {
-    showToast("Mobile Number should of exactly 8 characters", "error", 4);
+  if (Number.isNaN(parseInt(form["Mobile Number"]))) {
+    showToast("Please enter a valid number", "error", 4);
     return;
   }
 
