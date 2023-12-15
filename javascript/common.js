@@ -263,7 +263,7 @@ function onSubmit(e, onClose) {
   }
 
   if (Number.isNaN(parseInt(form["Mobile Number"]))) {
-    showToast("Please enter a valid number", "error", 4);
+    showToast("Please enter a valid number with numbers", "error", 4);
     return;
   }
 
