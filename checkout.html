@@ -6,15 +6,18 @@
     <title>Expresss - Checkout</title>
     <link rel="stylesheet" href="styles/global.css" />
     <link rel="stylesheet" href="styles/checkout.css" />
-    <script type="module" src="./javascript/checkout.js"></script>
+    <script src="./javascript/toast.js"></script>
+    <script src="./javascript/shopping-cart.js"></script>
+    <script src="./javascript/products.js"></script>
+    <script src="./javascript/checkout.js"></script>
+    <script src="./javascript/common.js" defer></script>
   </head>
-  <body>
+  <body onload="loadCheckout()">
     <div class="cheader">
-      <img src="images/logo.png" class="clogo" />
-      <div class="heading" style="color: white">Express</div>
+      <div class="heading">Checkout</div>
+      <div class="heading">Express</div>
     </div>
     <div class="container">
-      <div class="heading">checkout</div>
       <div class="checkout-items"></div>
       <div class="calctotal">
         <div class="calc">

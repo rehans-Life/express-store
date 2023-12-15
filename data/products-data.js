@@ -1,4 +1,4 @@
-export const categories = ["headphones", "earbuds", "speakers", "accessories"];
+const categories = ["headphones", "earbuds", "speakers", "accessories"];
 
 const headphones = [
   {
@@ -245,14 +245,74 @@ const accessories = [
   },
 ];
 
-export const productTypes = {
+const productTypes = {
   headphones,
   earbuds,
   accessories,
   speakers,
 };
 
-export const productBundles = {
+const defaultOrders = [
+  {
+    orderStatus: "On the way",
+    totalAmount: "536.00",
+    orderPlaced: "12-11-2023",
+    orderedItems: [
+      {
+        id: 2,
+        image:
+          "images/product-images/headphones/4bf0568a00e5ca0cf776b2533d8c8d71cbb6185107a67a3ee57a14b901c2b7c2__49957.webp",
+        title:
+          "Acid Snow Camo Crusher® ANC 2 Sensory Bass Headphones with Active Noise Canceling",
+        category: "Headphones",
+        price: 239,
+        quantity: 1,
+      },
+      {
+        id: 1,
+        image:
+          "images/product-images/speakers/2f244ee1b0d4e24ec5fff7fa41f3af837209d34b95540b662c6d345d7b8fd931__97257.webp",
+        title: "Terrain™ XL Wireless Bluetooth® Speaker",
+        category: "Speakers",
+        price: 79,
+        quantity: 1,
+      },
+    ],
+  },
+  {
+    orderStatus: "Completed",
+    totalAmount: "2022.00",
+    orderPlaced: "12-11-2023",
+    orderedItems: [
+      {
+        id: 3,
+        image: "images/carousel/headphone.webp",
+        title: "PUSH® ACTIVE TRUE WIRELESS EARBUDS",
+        category: "Headphones",
+        price: 65,
+        quantity: 19,
+      },
+      {
+        id: 3,
+        image: "images/carousel/speaker.webp",
+        title: "PUSH® ACTIVE TRUE WIRELESS EARBUDS",
+        category: "Speakers",
+        price: 24,
+        quantity: 6,
+      },
+      {
+        id: 7,
+        image: "images/carousel/headphone.webp",
+        title: "PUSH® ACTIVE TRUE WIRELESS EARBUDS",
+        category: "Earbuds",
+        price: 246,
+        quantity: 1,
+      },
+    ],
+  },
+];
+
+const productBundles = {
   "New Arrivals": headphones,
   "Exclusive Products": speakers,
   "Recommended Products": earbuds,

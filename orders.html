@@ -6,43 +6,18 @@
     <title>Expresss - Orders</title>
     <link rel="stylesheet" href="styles/global.css" />
     <link rel="stylesheet" href="styles/orders.css" />
-    <script type="module" src="./javascript/common.js" defer></script>
+    <script src="./data/products-data.js"></script>
+    <script src="./javascript/toast.js"></script>
+    <script src="./javascript/shopping-cart.js"></script>
+    <script src="./javascript/products.js"></script>
+    <script src="./javascript/orders.js"></script>
+    <script src="./javascript/common.js" defer></script>
   </head>
-  <body>
+  <body onload="loadOrders()">
     <div class="container">
       <h1 class="heading">YOUR ORDERS</h1>
-      <div class="orders-container">
-        <div style="width: 100%">
-          <hr />
-          <div>
-            <label style="padding-right: 8%; padding-left: 10%" for="orderDate">
-              Order Placed:
-            </label>
-            <label id="orderDate"></label>
-            <label style="padding-right: 8%" for="orderStatus"
-              >Order Status:</label
-            >
-            <label id="orderStatus"></label>
-            <label for="totalAmount">Total Amount:</label>
-            <label id="totalAmount"></label>
-          </div>
-          <hr />
-        </div>
-        <div style="width: 100%">
-          <hr />
-          <label style="padding-right: 8%; padding-left: 10%" for="orderDate"
-            >Order Placed:</label
-          >
-          <label id="orderDate"></label>
-          <label style="padding-right: 8%" for="orderStatus"
-            >Order Status:</label
-          >
-          <label id="orderStatus"></label>
-          <label for="totalAmount">Total Amount:</label>
-          <label id="totalAmount"></label>
-          <hr />
-        </div>
-      </div>
+      <div class="space-5"></div>
+      <div class="orders-container"></div>
     </div>
   </body>
 </html>

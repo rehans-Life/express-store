@@ -1,22 +1,21 @@
-import { displayAmounts } from "./shopping-cart.js";
-import { showToast } from "./toast.js";
+function loadCheckout() {
+  let checkoutItems = localStorage.getItem("cart");
+  let user = JSON.parse(localStorage.getItem("user"));
 
-let checkoutItems = localStorage.getItem("cart");
+  if (!checkoutItems) location.href = "/";
+  else checkoutItems = JSON.parse(checkoutItems);
 
-if (!checkoutItems) location.href = "/";
-else checkoutItems = JSON.parse(checkoutItems);
+  if (!checkoutItems.length) location.href = "/";
 
-if (!checkoutItems.length) location.href = "/";
-
-(() => {
-  document.getElementById("checkout").onclick = buyProducts;
+  document.getElementById("checkout").onclick = () =>
+    buyProducts(checkoutItems);
   displayAmounts(checkoutItems);
   displayCheckoutItems(checkoutItems);
-})();
+}
 
-function buyProducts() {
+function buyProducts(checkoutItems) {
   const order = {
-    orderStatus: "on the way",
+    orderStatus: "On the way",
     totalAmount: checkoutItems
       .reduce((acc, curr) => acc + curr.price * curr.quantity, 0)
       .toFixed("2"),

@@ -5,6 +5,7 @@
   align-items: center;
   height: 100px;
   padding: 30px 100px;
+  position: relative;
 }
 .clogo {
   cursor: pointer;
@@ -29,6 +30,10 @@
 .item .photo {
   width: 150px;
   height: 150px;
+}
+
+.heading {
+  color: white !important;
 }
 
 .item .item-info {
@@ -132,6 +137,7 @@
   .cheader {
     flex-direction: column;
     row-gap: 20px;
+    padding: 50px 0;
   }
   .clogo {
     width: 100px;

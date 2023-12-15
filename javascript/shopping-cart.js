@@ -1,8 +1,8 @@
-export function openShoppingCart() {
+function openShoppingCart() {
   document.getElementById("shopping-cart").style.transform = "TranslateX(0%)";
 }
 
-export function onCloseShoppingCart() {
+function onCloseShoppingCart() {
   document.getElementById("shopping-cart").style.transform = "TranslateX(100%)";
 }
 
@@ -15,7 +15,7 @@ function scorllToBottom() {
   });
 }
 
-export function displayCartItems() {
+function displayCartItems() {
   let cartItems = localStorage.getItem("cart");
 
   if (!cartItems) cartItems = [];
@@ -32,7 +32,7 @@ export function displayCartItems() {
   displayAmounts(cartItems);
 }
 
-export function displayAmounts(cartItems) {
+function displayAmounts(cartItems) {
   const subtotal = cartItems.reduce(
     (acc, { price, quantity }) => acc + price * quantity,
     0
@@ -127,7 +127,7 @@ function createCartItem(cartItemDetails) {
   return cartItemContainer;
 }
 
-export function addToCart(product) {
+function addToCart(product) {
   let cartItems = localStorage.getItem("cart");
 
   if (!cartItems) cartItems = [];
