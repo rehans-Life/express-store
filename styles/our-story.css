@@ -23,3 +23,12 @@
 .credits-list li a {
   color: rgb(64, 64, 204) !important;
 }
+
+.member {
+  font-weight: 500;
+  font-size: 1.15rem !important;
+}
+
+.member span {
+  font-weight: 600 !important;
+}

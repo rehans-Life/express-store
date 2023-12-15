@@ -19,7 +19,9 @@ function buyProducts(checkoutItems) {
     totalAmount: checkoutItems
       .reduce((acc, curr) => acc + curr.price * curr.quantity, 0)
       .toFixed("2"),
-    orderPlaced: `${new Date().getDate()}-${new Date().getMonth()}-${new Date().getFullYear()}`,
+    orderPlaced: `${new Date().getDate()}-${
+      new Date().getMonth() + 1
+    }-${new Date().getFullYear()}`,
     orderedItems: checkoutItems,
   };
 

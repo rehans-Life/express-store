@@ -45,6 +45,7 @@
   cursor: pointer;
   font-size: 15px;
   transition: all ease-in 200ms;
+  white-space: nowrap;
 }
 
 .link:hover {
@@ -108,6 +109,7 @@
   column-gap: 20px;
   row-gap: 35px;
   padding: 3rem 4rem;
+  min-height: 65vh;
 }
 
 .content {

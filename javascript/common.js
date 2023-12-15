@@ -7,8 +7,8 @@ const headerHTML = `<div class="header">
       PRODUCTS
     </div>
     <div class="link" onclick="location.href = './orders.html'">ORDERS</div>
-    <div class="link" onclick="location.href = './making-of.html'">
-      MAKING OF
+    <div class="link" onclick="location.href = './making-of-express.html'">
+      MAKING OF EXPRESS
     </div>
     <div class="link" onclick="location.href = './our-story.html'">
       OUR STORY
@@ -127,11 +127,6 @@ const shoppingCartHTML = `<div id="shopping-cart" class="shopping-cart-container
 `;
 
 (() => {
-  const orders = localStorage.getItem("orders");
-  if (!orders) {
-    localStorage.setItem("orders", JSON.stringify(defaultOrders));
-  }
-
   const navbar = document.createElement("div");
   navbar.id = "navbar";
 
