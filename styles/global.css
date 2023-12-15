@@ -477,9 +477,10 @@
   border-top-left-radius: 10px;
   padding: 20px 0px 0 0px;
   box-shadow: 10px 0 10px 10px rgba(0, 0, 0, 0.5);
+  overflow-y: auto;
 }
 
-.shopping-cart-container * {
+.shopping-cart-container .cart-items-container .cart-item * {
   -webkit-tap-highlight-color: transparent;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
