@@ -7,7 +7,7 @@
   images.forEach((image, index) => {
     const img = new Image();
 
-    img.src = `../images/carousel/${image}.webp`;
+    img.src = `./images/carousel/${image}.webp`;
     img.style.width = "100%";
     img.style.transition = "all ease-out 250ms";
 

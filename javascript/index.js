@@ -1,6 +1,3 @@
-import { productBundles } from "../data/products-data.js";
-import { createProduct } from "./products.js";
-
 (() => {
   displayProductBundles();
 

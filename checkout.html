@@ -6,6 +6,40 @@
     <title>Expresss - Checkout</title>
     <link rel="stylesheet" href="styles/global.css" />
     <link rel="stylesheet" href="styles/checkout.css" />
+    <script src="./javascript/toast.js"></script>
+    <script src="./javascript/shopping-cart.js"></script>
+    <script src="./javascript/products.js"></script>
+    <script src="./javascript/checkout.js"></script>
+    <script src="./javascript/common.js" defer></script>
   </head>
-  <body></body>
+  <body onload="loadCheckout()">
+    <div class="cheader">
+      <div class="heading">Checkout</div>
+      <div class="heading">Express</div>
+    </div>
+    <div class="container">
+      <div class="checkout-items"></div>
+      <div class="calctotal">
+        <div class="calc">
+          <div class="val-container">
+            <div class="label">Subtotal:</div>
+            <div class="value subtotal-value"></div>
+          </div>
+          <div class="val-container">
+            <div class="label">Shipping:</div>
+            <div class="value">12 BD</div>
+          </div>
+          <div class="total-container">
+            <div class="label">Total:</div>
+            <div class="value total-value"></div>
+          </div>
+          <div class="cbtn">
+            <button class="blue-btn" id="checkout" type="button">
+              <span>CHECKOUT</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>

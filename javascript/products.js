@@ -1,42 +1,42 @@
-import { categories, productTypes } from "../data/products-data.js";
-import { addToCart } from "./shopping-cart.js";
-
-const categoriesContainer = document.querySelector(".categories");
 let selectedCategory = categories[0];
 
-if (categoriesContainer) {
-  categories.reverse();
+function loadProducts() {
+  const categoriesContainer = document.querySelector(".categories");
 
-  categories.forEach((category) => {
-    const btn = document.createElement("button");
-    btn.classList.add("black-btn");
-    btn.id = category;
+  if (categoriesContainer) {
+    categories.reverse();
 
-    const btnText = document.createElement("span");
-    btnText.innerText = category;
-    btn.appendChild(btnText);
+    categories.forEach((category) => {
+      const btn = document.createElement("button");
+      btn.classList.add("black-btn");
+      btn.id = category;
 
-    if (selectedCategory === category) {
-      displayProducts(category);
-      btn.classList.add("selected-black-btn");
-    }
+      const btnText = document.createElement("span");
+      btnText.innerText = category;
+      btn.appendChild(btnText);
 
-    btn.onclick = () => {
-      document
-        .getElementById(selectedCategory)
-        .classList.remove("selected-black-btn");
+      if (selectedCategory === category) {
+        displayProducts(category);
+        btn.classList.add("selected-black-btn");
+      }
 
-      selectedCategory = category;
-      btn.classList.add("selected-black-btn");
-      displayProducts(category);
-    };
+      btn.onclick = () => {
+        document
+          .getElementById(selectedCategory)
+          .classList.remove("selected-black-btn");
 
-    categoriesContainer.prepend(btn);
-  });
+        selectedCategory = category;
+        btn.classList.add("selected-black-btn");
+        displayProducts(category);
+      };
+
+      categoriesContainer.prepend(btn);
+    });
+  }
+
+  const orderSelect = document.querySelector(".order");
+  if (orderSelect) orderSelect.onchange = displayProducts;
 }
-
-const orderSelect = document.querySelector(".order");
-if (orderSelect) orderSelect.onchange = displayProducts;
 
 function displayProducts() {
   const products = productTypes[selectedCategory];
@@ -56,7 +56,7 @@ function displayProducts() {
   });
 }
 
-export function createProduct(productDetails) {
+function createProduct(productDetails) {
   const productContainer = document.createElement("div");
   productContainer.classList.add("product");
 

@@ -1,4 +1,4 @@
-export const showToast = (message, type, time = 2) => {
+const showToast = (message, type, time = 2) => {
   const toast = document.createElement("div");
 
   toast.innerText = message;
